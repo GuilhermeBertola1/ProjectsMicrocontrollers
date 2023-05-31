@@ -9,8 +9,9 @@ void Connection(){
     WiFi.begin(nomeRede, senhaRede);
     while(WiFi.status() != WL_CONNECTED){
         delay(500);
-        Serial.println(".");
+        Serial.print(".");
     }
+    Serial.println("Conectado a rede!!!");
 }
 
 void setup(){
