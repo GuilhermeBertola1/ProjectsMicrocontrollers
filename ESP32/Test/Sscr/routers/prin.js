@@ -3,13 +3,13 @@ import dataVariavel from "./routers.js"
 
 const routes = (app) => {
     app.route('/').get((req, res) => {
-        res.status(200).send({titulo: "Servidor intermediario"})
+        res.status(200).send('boaa')
     });
 
-    app.use(
+    /*app.use(
         express.json(),
         dataVariavel
-    )
+    )*/
 }
 
 export default routes;
