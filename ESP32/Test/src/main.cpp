@@ -11,6 +11,7 @@ void Connection(){
         delay(500);
         Serial.print(".");
     }
+    Serial.println(" ");
     Serial.println("Conectado a rede!!!");
 }
 
