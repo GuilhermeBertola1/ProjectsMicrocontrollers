@@ -1,5 +1,6 @@
 import  express  from "express";
 import db from "./Sscr/dbConnect.js"
+import routes from "./Sscr/routers/prin.js";
 
 const app = express();
 
@@ -8,13 +9,10 @@ db.once("open", () => {
   console.log("Conexao com o banco feita com sucesso");
 });
 
-app.get('/', function(req, res){
-  res.send("Hello word");
-});
+app.use(express.json());
+routes(app);
 
-app.get('/projeto', function(req, res){
-  res.send("PROJETO COM ESP8266");
-});
+export default app;
 
 app.listen(3000, function(){
   console.log("Servidor rodando: http://localhost:3000");
