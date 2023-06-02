@@ -3,12 +3,8 @@
 
 const char* nomeRede = "BERTOLA_2.4G_EXT";
 const char* senhaRede = "170704gui";
-const int Port = 3000;
 
 bool status = 0;
-
-WiFiClient client;
-HTTPClient http;
 
 void Connection(){
     WiFi.begin(nomeRede, senhaRede);
@@ -21,6 +17,9 @@ void Connection(){
 }
 
 void getFunction(String url){
+    HTTPClient http;
+    WiFiClient client;
+    
     if(http.begin(client, url)){
         Serial.println("Http iniciado");
     }else{
@@ -29,14 +28,15 @@ void getFunction(String url){
 
     int httpCode = http.GET();
     Serial.println(httpCode);
+    String res = http.getString();
+    Serial.println(res);
 
-    http.end();
 }
 
 void setup(){
     Serial.begin(9600);
     Connection();
-    getFunction("http://localhost:3000/");
+    getFunction("http://localhost:3000");
 }
 
 void loop(){
