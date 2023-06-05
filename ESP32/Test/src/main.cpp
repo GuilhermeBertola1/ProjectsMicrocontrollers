@@ -1,44 +1,51 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-const char* nomeRede = "BERTOLA_2.4G_EXT";
-const char* senhaRede = "170704gui";
+const char* ssid = "BERTOLA_2.4G_EXT";
+const char* password = "170704gui";
 
-bool status = 0;
 
-void Connection(){
-    WiFi.begin(nomeRede, senhaRede);
-    while(WiFi.status() != WL_CONNECTED){
-        delay(500);
-        Serial.print(".");
-    }
-    Serial.println(" ");
-    Serial.println("Conectado a rede!!!");
+WiFiClient client;
+HTTPClient http;
+
+void setup() {
+
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print(".");
+  }
+
+  Serial.println(WiFi.localIP());
+
 }
 
-void getFunction(String url){
-    HTTPClient http;
-    WiFiClient client;
-    
-    if(http.begin(client, url)){
-        Serial.println("Http iniciado");
-    }else{
-        Serial.println("Http error de conexao");
-    }
+void loop() {
+  if (WiFi.status() == WL_CONNECTED) {
 
+    http.begin(client, "http://127.0.0.1:3000/");
     int httpCode = http.GET();
+    Serial.println("Connected");
     Serial.println(httpCode);
-    String res = http.getString();
-    Serial.println(res);
+    //Check the returning code
+    if (httpCode == 200) {
+      Serial.println("Connected");
+      String payload = http.getString();
+      Serial.println("http string");
+      Serial.println(payload);
+      Serial.println("http string end");
 
-}
-
-void setup(){
-    Serial.begin(9600);
-    Connection();
-    getFunction("http://localhost:3000");
-}
-
-void loop(){
+    } else {
+      Serial.println("Gateway Problem");
+    }
+    http.end();   //Close connection
+  } else {
+    Serial.println("NOT Connected! Check WiFi");
+  }
+  // Delay
+  delay(1000);
 
 }
