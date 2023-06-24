@@ -1,51 +1,74 @@
 #include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
+#include <ESP8266WebServer.h>
+#include <WiFiClient.h>
+#include <DNSServer.h>
+#include <ESP8266mDNS.h>
 
-const char* ssid = "BERTOLA_2.4G_EXT";
-const char* password = "170704gui";
+#include <TextHtml.h>
 
+#include <EEPROM.h>
+#include <FS.h>
+
+const char* AdressRede = "BERTOLA_2.4G_EXT";
+const char* Password = "170704gui";
 
 WiFiClient client;
-HTTPClient http;
+ESP8266WebServer server(80);
+
+void handleRoot(){
+    String textoHTML;
+
+    textoHTML = "Iniciado o web server";
+
+    server.send(200, "text/html", textoHTML);
+}
+
+void handNotFound(){
+    String message = "pagina nao encontrada";
+    message += "URI: ";
+    message += server.uri();
+    message += "\nArguments: ";
+    message += server.args();
+    message += "\n";
+    for(uint8_t i=0; i<server.args(); i++){
+        message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
+    }
+
+    server.send(404, "text/plain", message);
+}
+
 
 void setup() {
+    Serial.begin(115200);
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(AdressRede, Password);
+    while (WiFi.status() != WL_CONNECTED){
+        delay(500);
+        Serial.print(".");
+    }
+    Serial.println(" ");
+    Serial.print("Conextado em: ");
+    Serial.println(AdressRede);
+    Serial.print("IP: ");
+    Serial.println(WiFi.localIP());
 
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
+    if(MDNS.begin("esp8266")){
+        Serial.println("MDNS respondendo");
+    }
 
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.print(".");
-  }
+    server.on("/", handleRoot);
 
-  Serial.println(WiFi.localIP());
+    server.on("/inline", []() {
+        server.send(200,  "text/plain", "this works as well");
+    });
+
+    server.onNotFound(handNotFound);
+
+    server.begin();
+    Serial.println("HTTP serve rodando");
 
 }
 
 void loop() {
-  if (WiFi.status() == WL_CONNECTED) {
-
-    http.begin(client, "http://127.0.0.1:3000/");
-    int httpCode = http.GET();
-    Serial.println("Connected");
-    Serial.println(httpCode);
-    //Check the returning code
-    if (httpCode == 200) {
-      Serial.println("Connected");
-      String payload = http.getString();
-      Serial.println("http string");
-      Serial.println(payload);
-      Serial.println("http string end");
-
-    } else {
-      Serial.println("Gateway Problem");
-    }
-    http.end();   //Close connection
-  } else {
-    Serial.println("NOT Connected! Check WiFi");
-  }
-  // Delay
-  delay(1000);
-
+    server.handleClient();
 }
