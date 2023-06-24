@@ -4,7 +4,7 @@ String message(){
 
     String textoHTML;
     textoHTML = "Web server ESP8266";
-    textoHTML += "\n iniciado com sucesso"
-    
+    textoHTML += "\n iniciado com sucesso";
+
     return textoHTML;
 }
