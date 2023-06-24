@@ -5,6 +5,8 @@
 #include <ESP8266mDNS.h>
 
 #include <TextHtmlRoot.h>
+#include <pontH.h>
+#include <sensorModule.h>
 
 #include <EEPROM.h>
 #include <FS.h>
