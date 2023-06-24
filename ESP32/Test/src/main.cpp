@@ -4,7 +4,7 @@
 #include <DNSServer.h>
 #include <ESP8266mDNS.h>
 
-#include <TextHtml.h>
+#include <TextHtmlRoot.h>
 
 #include <EEPROM.h>
 #include <FS.h>
@@ -16,20 +16,19 @@ WiFiClient client;
 ESP8266WebServer server(80);
 
 void handleRoot(){
-    String textoHTML;
 
-    textoHTML = "Iniciado o web server";
-
-    server.send(200, "text/html", textoHTML);
+    server.send(200, "text/html", message());
 }
 
 void handNotFound(){
+
     String message = "pagina nao encontrada";
     message += "URI: ";
     message += server.uri();
     message += "\nArguments: ";
     message += server.args();
     message += "\n";
+
     for(uint8_t i=0; i<server.args(); i++){
         message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
     }
