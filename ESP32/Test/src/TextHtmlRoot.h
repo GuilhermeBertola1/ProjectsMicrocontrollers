@@ -1,5 +1,6 @@
 #include <String.h>
 #include <TextScript.h>
+#include <TextCss.h>
 
 String message(){
 
@@ -9,6 +10,7 @@ String message(){
     textoHTML += "<head>";
     textoHTML += "<meta charset='UTF-8'>";
     textoHTML += "<title>ESP8266</title>";
+    textoHTML += CSS;
     textoHTML += "</head>";
 
     textoHTML += "<body>";
