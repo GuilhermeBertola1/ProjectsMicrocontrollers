@@ -18,7 +18,6 @@ WiFiClient client;
 ESP8266WebServer server(80);
 
 void handleRoot(){
-
     server.send(200, "text/html", message());
 }
 
