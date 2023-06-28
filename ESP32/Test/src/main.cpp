@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <WiFiClient.h>
+#include <WiFiManager.h>
 #include <DNSServer.h>
 #include <ESP8266mDNS.h>
 
@@ -49,6 +50,7 @@ void setup() {
     IPAddress IP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
     Serial.println(IP);
+//-------------------------
 
     if(MDNS.begin("esp8266")){
         Serial.println("MDNS respondendo");
