@@ -27,7 +27,6 @@ String messageHTML(){
     textoHTML += "<button class='button' id='button2' >LIGAR LED</button>";
     textoHTML += "</div>";
 
-    textoHTML += "<button type='button'>Click Me!</button> <br>";
     textoHTML += JS;
     textoHTML += "</body>";
 
