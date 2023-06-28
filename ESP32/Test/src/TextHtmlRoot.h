@@ -16,6 +16,17 @@ String messageHTML(){
     textoHTML += "<body>";
     textoHTML += "Web server ESP8266 <br>";
     textoHTML += "iniciado com sucesso <br>";
+
+    textoHTML += "<div id='Quadro'></div>";
+    textoHTML += "<div id='Quadro1'></div>";
+    textoHTML += "<div id='Quadro2'></div>";
+    textoHTML += "<div id='Quadro3'></div>";
+
+    textoHTML += "<div id='BOTOES'>";
+    textoHTML += "<button class='button' id='button1' >DESLIGAR SENSOR</button>";
+    textoHTML += "<button class='button' id='button2' >LIGAR LED</button>";
+    textoHTML += "</div>";
+
     textoHTML += "<button type='button'>Click Me!</button> <br>";
     textoHTML += JS;
     textoHTML += "</body>";
