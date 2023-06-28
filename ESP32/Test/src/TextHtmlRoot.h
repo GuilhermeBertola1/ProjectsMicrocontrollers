@@ -2,7 +2,7 @@
 #include <TextScript.h>
 #include <TextCss.h>
 
-String message(){
+String messageHTML(){
 
     String textoHTML;
     textoHTML = "<html>";

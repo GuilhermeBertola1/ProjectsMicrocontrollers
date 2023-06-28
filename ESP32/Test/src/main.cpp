@@ -14,11 +14,14 @@
 const char* AdressRede = "BERTOLA_2.4G_EXT";
 const char* Password = "170704gui";
 
+const char* ApAdress = "ESP8266-Access-Point";
+const char* ApPass = "170704gui";
+
 WiFiClient client;
 ESP8266WebServer server(80);
 
 void handleRoot(){
-    server.send(200, "text/html", message());
+    server.send(200, "text/html", messageHTML());
 }
 
 void handNotFound(){
@@ -40,17 +43,12 @@ void handNotFound(){
 
 void setup() {
     Serial.begin(115200);
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(AdressRede, Password);
-    while (WiFi.status() != WL_CONNECTED){
-        delay(500);
-        Serial.print(".");
-    }
-    Serial.println(" ");
-    Serial.print("Conextado em: ");
-    Serial.println(AdressRede);
-    Serial.print("IP: ");
-    Serial.println(WiFi.localIP());
+
+//estacao local
+    WiFi.softAP(ApAdress, ApPass);
+    IPAddress IP = WiFi.softAPIP();
+    Serial.print("AP IP address: ");
+    Serial.println(IP);
 
     if(MDNS.begin("esp8266")){
         Serial.println("MDNS respondendo");
