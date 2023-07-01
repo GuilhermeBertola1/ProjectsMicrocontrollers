@@ -3,19 +3,42 @@
 
 const char JS[] = R"===(
     <script>
-        const button1 = document.getElementById('button1');
-        const button2 = document.getElementById('button2');
+        const chk = document.getElementById('chk');
+        const chk1 = document.getElementById('chk1');
+        const chk2 = document.getElementById('chk2');
+        const chk3 = document.getElementById('chk3');
 
-        function botaoJS(){
-            console.log("DESLIGOU");
-        }
+        chk.addEventListener('change', () => {
+            if(chk.checked){
+                console.log(true);
+            }else{
+                console.log(false);
+            }
+        });
 
-        function botaoJS2(){
-            console.log("LIGOU");
-        }
+        chk1.addEventListener('change', () => {
+            if(chk1.checked){
+                console.log(true);
+            }else{
+                console.log(false);
+            }
+        });
 
-        button1.addEventListener('click', botaoJS);
-        button2.addEventListener('click', botaoJS2);
+        chk2.addEventListener('change', () => {
+            if(chk2.checked){
+                console.log(true);
+            }else{
+                console.log(false);
+            }
+        });
+
+        chk3.addEventListener('change', () => {
+            if(chk3.checked){
+                console.log(true);
+            }else{
+                console.log(false);
+            }
+        });
 
     </script>
 )===";
