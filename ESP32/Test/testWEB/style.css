@@ -42,11 +42,12 @@ body{
     cursor: pointer;
 
     display: flex;
-    align-items: center;
+    left: 10%;
+    top: 20%;
     justify-content: space-between;
 
     padding: 5px;
-    position: relative;
+    position: absolute;
     height: 26px;
     width: 50px;
 }
@@ -57,11 +58,11 @@ body{
     cursor: pointer;
 
     display: flex;
-    align-items: center;
+    left: 30%;
     justify-content: space-between;
 
     padding: 5px;
-    position: relative;
+    position: absolute;
     height: 26px;
     width: 50px;
 }
@@ -72,11 +73,11 @@ body{
     cursor: pointer;
 
     display: flex;
-    align-items: center;
+    left: 50%;
     justify-content: space-between;
 
     padding: 5px;
-    position: relative;
+    position: absolute;
     height: 26px;
     width: 50px;
 }
@@ -87,11 +88,11 @@ body{
     cursor: pointer;
 
     display: flex;
-    align-items: center;
+    left: 70%;
     justify-content: space-between;
 
     padding: 5px;
-    position: relative;
+    position: absolute;
     height: 26px;
     width: 50px;
 }
