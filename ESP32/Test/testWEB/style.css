@@ -42,8 +42,8 @@ body{
     cursor: pointer;
 
     display: flex;
-    left: 10%;
-    top: 20%;
+    left: 1%;
+    top: 2%;
     justify-content: space-between;
 
     padding: 5px;
@@ -58,7 +58,8 @@ body{
     cursor: pointer;
 
     display: flex;
-    left: 30%;
+    left: 1%;
+    top: 52%;
     justify-content: space-between;
 
     padding: 5px;
@@ -73,7 +74,8 @@ body{
     cursor: pointer;
 
     display: flex;
-    left: 50%;
+    left: 51%;
+    top: 2%;
     justify-content: space-between;
 
     padding: 5px;
@@ -88,7 +90,8 @@ body{
     cursor: pointer;
 
     display: flex;
-    left: 70%;
+    left: 51%;
+    top: 52%;
     justify-content: space-between;
 
     padding: 5px;
