@@ -103,7 +103,7 @@ const char CSS[] = R"===(
         }
 
         .label .ball{
-            background-color: white;
+            background-color: red;
             border-radius: 50%;
             position: absolute;
             top: 2px;
@@ -117,7 +117,7 @@ const char CSS[] = R"===(
         }
 
         .label1 .ball1{
-            background-color: white;
+            background-color: red;
             border-radius: 50%;
             position: absolute;
             top: 2px;
@@ -131,7 +131,7 @@ const char CSS[] = R"===(
         }
 
         .label2 .ball2{
-            background-color: white;
+            background-color: red;
             border-radius: 50%;
             position: absolute;
             top: 2px;
@@ -145,7 +145,7 @@ const char CSS[] = R"===(
         }
 
         .label3 .ball3{
-            background-color: white;
+            background-color: red;
             border-radius: 50%;
             position: absolute;
             top: 2px;
@@ -159,18 +159,22 @@ const char CSS[] = R"===(
         }
 
         .checkbox:checked + .label .ball {
+            background-color: green;
             transform: translateX(24px);
         }
 
         .checkbox1:checked + .label1 .ball1 {
+            background-color: green;
             transform: translateX(24px);
         }
 
         .checkbox2:checked + .label2 .ball2 {
+            background-color: green;
             transform: translateX(24px);
         }
 
         .checkbox3:checked + .label3 .ball3 {
+            background-color: green;
             transform: translateX(24px);
         }
 

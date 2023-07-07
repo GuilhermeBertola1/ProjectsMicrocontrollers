@@ -15,9 +15,6 @@ String messageHTML(){
 
     textoHTML += "<body>";
 
-    textoHTML += "Web server ESP8266 <br>";
-    textoHTML += "iniciado com sucesso <br>";
-
     textoHTML += "<div id='Quadro'></div>";
     textoHTML += "<div id='Quadro1'></div>";
     textoHTML += "<div id='Quadro2'></div>";
