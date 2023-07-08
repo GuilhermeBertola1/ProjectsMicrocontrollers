@@ -4,6 +4,7 @@
 #include <WiFiManager.h>
 #include <DNSServer.h>
 #include <ESP8266mDNS.h>
+#include <ESP8266HTTPClient.h>
 
 #include <TextHtmlRoot.h>
 #include <pontH.h>
@@ -19,6 +20,7 @@ const char* ApAdress = "ESP8266-Access-Point";
 const char* ApPass = "170704gui";
 
 WiFiClient client;
+HTTPClient http;
 ESP8266WebServer server(80);
 
 void handleRoot(){
