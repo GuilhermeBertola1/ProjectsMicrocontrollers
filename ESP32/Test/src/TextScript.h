@@ -1,5 +1,3 @@
-#include <pontH.h>
-#include <sensorModule.h>
 #include <String.h>
 
 String scriptJS(){
