@@ -13,8 +13,10 @@
 #include <EEPROM.h>
 #include <FS.h>
 
-const char* AdressRede = "BERTOLA_2.4G_EXT";
-const char* Password = "170704gui";
+bool PontH;
+bool SensorM;
+bool statusPH = false;
+bool statusMS = false;
 
 const char* ApAdress = "ESP8266-Access-Point";
 const char* ApPass = "170704gui";
@@ -24,7 +26,11 @@ HTTPClient http;
 ESP8266WebServer server(80);
 
 void handleRoot(){
-    server.send(200, "text/html", messageHTML());
+
+    Serial.println(PontH);
+    Serial.println(SensorM);
+
+    server.send(200, "text/html", messageHTML(status));
 }
 
 void handNotFound(){
@@ -43,9 +49,49 @@ void handNotFound(){
     server.send(404, "text/plain", message);
 }
 
+void handlePHON(){
+    PontH = true;
+    statusPH = true;
+
+    Serial.println(PontH);
+    Serial.println(SensorM);
+
+    server.send(200, "text/html", messageHTML(statusPH));
+}
+
+void handlePHOFF(){
+    PontH = false;
+    statusPH = false;
+
+    Serial.println(PontH);
+    Serial.println(SensorM);
+
+    server.send(200, "text/html", messageHTML(statusPH));
+}
+
+void handleSMon(){
+    SensorM = true;
+    statusMS = true;
+
+    Serial.println(PontH);
+    Serial.println(SensorM);
+
+    server.send(200, "text/html", messageHTML(statusMS));
+}
+
+void handleSMoff(){
+    SensorM = false;
+    statusMS = false;
+
+    Serial.println(PontH);
+    Serial.println(SensorM);
+
+    server.send(200, "text/html", messageHTML(statusMS));
+}
+
 
 void setup() {
-    
+
     Serial.begin(115200);
 
 //estacao local
@@ -60,12 +106,15 @@ void setup() {
     }
 
     server.on("/", handleRoot);
+    server.on("/PhON", handlePHON);
+    server.on("/PhOFF", handlePHOFF);
+    server.on("/SensorON", handleSMon);
+    server.on("/SensorOFF", handleSMoff);
+    server.onNotFound(handNotFound);
 
     server.on("/inline", []() {
         server.send(200,  "text/plain", "this works as well");
     });
-
-    server.onNotFound(handNotFound);
 
     server.begin();
     Serial.println("HTTP serve rodando");

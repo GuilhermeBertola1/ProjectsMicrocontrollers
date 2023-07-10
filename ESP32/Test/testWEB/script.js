@@ -6,6 +6,7 @@ const chk3 = document.getElementById('chk3');
 chk.addEventListener('change', () => {
     if(chk.checked){
         console.log(true);
+        window.location='file:///c%3A/Users/guilh/OneDrive/Documents/GitHub/ProjectsMicrocontrollers/ESP32/Test/testWEB/index.html/PH';
     }else{
         console.log(false);
     }

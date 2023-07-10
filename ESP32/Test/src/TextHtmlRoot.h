@@ -2,7 +2,7 @@
 #include <TextScript.h>
 #include <TextCss.h>
 
-String messageHTML(){
+String messageHTML(uint8_t che){
 
     String textoHTML;
     textoHTML = "<html>";
@@ -22,7 +22,11 @@ String messageHTML(){
 
     textoHTML += "<div>";
 
-    textoHTML += "<input type='checkbox' class='checkbox' id='chk'/>";
+    if(che){
+        textoHTML += "<input type='checkbox' class='checkbox' id='chk' checked= 'checked'/>";
+    }else{
+        textoHTML += "<input type='checkbox' class='checkbox' id='chk'/>";
+    }
     
     textoHTML += "<label class='label' for='chk'>";
     textoHTML += "<div class='ball'></div>";
