@@ -45,6 +45,7 @@ void handNotFound(){
 
 
 void setup() {
+    
     Serial.begin(115200);
 
 //estacao local
