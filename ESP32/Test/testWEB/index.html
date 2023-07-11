@@ -9,7 +9,14 @@
 
     <script src="https://kit.fontawesome.com/175d68675d.js" crossorigin="anonymous"></script>
 
-    <header class="header"></header>
+    <header>
+        <div class="info-header">
+            <div class="logo">
+                <h3>Web Server ESP82266</h3>
+            </div>
+        </div>
+    </header>
+
     <section class="sidebar"></section>
     <main class="main"></main>
 
@@ -18,36 +25,38 @@
         <input type="checkbox" class="checkbox" id="chk"/>
 
         <label class="label" for="chk">
-            <i class="fa-solid fa-power-off" id="OFF"></i>
-            <i class="fa-solid fa-power-off" id="ON"></i>
             <div class="ball"></div>
         </label>
+
+        <div class="logoPH">
+            <h3>Botao Ponte H</h3>
+        </div>
 
         <input type="checkbox" class="checkbox1" id="chk1"/>
 
         <label class="label1" for="chk1">
-            <i class="fa-solid fa-power-off" id="OFF1"></i>
-            <i class="fa-solid fa-power-off" id="ON1"></i>
             <div class="ball1"></div>
         </label>
+
+        <div class="logoSM">
+            <h3>Botao SM</h3>
+        </div>
 
         <input type="checkbox" class="checkbox2" id="chk2"/>
 
         <label class="label2" for="chk2">
-            <i class="fa-solid fa-power-off" id="OFF2"></i>
-            <i class="fa-solid fa-power-off" id="ON2"></i>
             <div class="ball2"></div>
         </label>
 
         <input type="checkbox" class="checkbox3" id="chk3"/>
 
         <label class="label3" for="chk3">
-            <i class="fa-solid fa-power-off" id="OFF3"></i>
-            <i class="fa-solid fa-power-off" id="ON3"></i>
             <div class="ball3"></div>
         </label>
 
     </div>
+
+    <canvas id="canvasGrafico" class="canvasGrafico"></canvas>
 
     <script src="script.js"></script>
 </body>
