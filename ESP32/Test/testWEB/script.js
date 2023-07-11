@@ -61,7 +61,7 @@ window.onload = function(){
 	}
 
     function desenharGrafico() {
-        if(x === 1000){
+        if(x === 995){
             x = 0;
 
             ctx.beginPath();
@@ -83,7 +83,12 @@ window.onload = function(){
         ctx.fillRect(0, 0, largura, 30);
         //desenha o texto indicando o valor do gráfico, na posição x atual
         ctx.fillStyle = "red";
-        ctx.fillText(valor, x, 30);
+        if(x <= 930){
+            ctx.fillText(valor, x, 30);
+        }else{
+            ctx.fillText(valor, 930, 30);
+        }
+        
     }
     
     setInterval(desenharGrafico, 100);
