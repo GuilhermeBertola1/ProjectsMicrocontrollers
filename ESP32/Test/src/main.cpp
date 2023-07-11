@@ -128,4 +128,7 @@ void setup() {
 
 void loop() {
     server.handleClient();
+
+    if(statusPH){}else{}
+    if(statusMS){}else{}
 }
