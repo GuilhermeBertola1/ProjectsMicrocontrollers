@@ -15,6 +15,7 @@
 
 bool PontH;
 bool SensorM;
+bool status = false;
 bool statusPH = false;
 bool statusMS = false;
 
@@ -30,7 +31,7 @@ void handleRoot(){
     Serial.println(PontH);
     Serial.println(SensorM);
 
-    server.send(200, "text/html", messageHTML(status));
+    server.send(200, "text/html", messageHTML(status, status));
 }
 
 void handNotFound(){
@@ -53,40 +54,44 @@ void handlePHON(){
     PontH = true;
     statusPH = true;
 
+    Serial.println("entradas PH:");
     Serial.println(PontH);
-    Serial.println(SensorM);
+    Serial.println();
 
-    server.send(200, "text/html", messageHTML(statusPH));
+    server.send(200, "text/html", messageHTML(statusPH, statusMS));
 }
 
 void handlePHOFF(){
     PontH = false;
     statusPH = false;
 
+    Serial.println("entradas PH:");
     Serial.println(PontH);
-    Serial.println(SensorM);
+    Serial.println();
 
-    server.send(200, "text/html", messageHTML(statusPH));
+    server.send(200, "text/html", messageHTML(statusPH, statusMS));
 }
 
 void handleSMon(){
     SensorM = true;
     statusMS = true;
 
-    Serial.println(PontH);
+    Serial.println("entradas SM:");
     Serial.println(SensorM);
+    Serial.println();
 
-    server.send(200, "text/html", messageHTML(statusMS));
+    server.send(200, "text/html", messageHTML(statusPH, statusMS));
 }
 
 void handleSMoff(){
     SensorM = false;
     statusMS = false;
 
-    Serial.println(PontH);
+    Serial.println("entradas SM:");
     Serial.println(SensorM);
+    Serial.println();
 
-    server.send(200, "text/html", messageHTML(statusMS));
+    server.send(200, "text/html", messageHTML(statusPH, statusMS));
 }
 
 

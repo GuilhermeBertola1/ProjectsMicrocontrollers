@@ -10,7 +10,7 @@ String scriptJS(){
     script += "const chk2 = document.getElementById('chk2');";
     script += "const chk3 = document.getElementById('chk3');";
     script += "chk.addEventListener('change', () => {if(chk.checked){ window.location = 'http://192.168.4.1/PhON'; }else{ window.location = 'http://192.168.4.1/PhOFF'; } });";
-    script += "chk1.addEventListener('change', () => {if(chk1.checked){ console.log(true); }else{ console.log(false);} });";
+    script += "chk1.addEventListener('change', () => {if(chk1.checked){ window.location = 'http://192.168.4.1/SensorON' }else{ window.location = 'http://192.168.4.1/SensorOFF'; } });";
     script += "chk2.addEventListener('change', () => {if(chk2.checked){ console.log(true); }else{ console.log(false);} });";
     script += "chk3.addEventListener('change', () => {if(chk3.checked){ console.log(true); }else{ console.log(false);} });";
     script += "</script>";
