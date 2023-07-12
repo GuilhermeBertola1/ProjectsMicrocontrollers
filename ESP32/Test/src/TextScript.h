@@ -1,6 +1,6 @@
 #include <String.h>
 
-String scriptJS(){
+String scriptJS(uint8_t ph){
 
     String script;
 

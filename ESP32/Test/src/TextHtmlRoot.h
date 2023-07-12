@@ -56,7 +56,7 @@ String messageHTML(uint8_t ph, uint8_t sm){
     
     textoHTML += "</div>";
 
-    textoHTML += scriptJS();
+    textoHTML += scriptJS(sm);
     textoHTML += "</body>";
 
     textoHTML += "</html>";
