@@ -219,6 +219,23 @@ header{
 .canvasGrafico{
     display: flex;
     position: absolute;
-    top: 40%;
-    left: 17%;
+    top: 69.4%;
+}
+
+.tabelademonitoramento{
+    position: absolute;
+    background-color: gray;
+    width: 400px;
+    height: 400px;
+    overflow-y: scroll;
+    word-break: break-all;
+
+    top: 47.4%;
+    left: 67%;   
+}
+
+.tempo{
+    position: absolute;
+    left: 90%;
+    top: 20%;
 }

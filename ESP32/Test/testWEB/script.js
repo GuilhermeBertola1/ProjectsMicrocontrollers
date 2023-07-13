@@ -38,6 +38,8 @@ chk3.addEventListener('change', () => {
 
 window.onload = function(){
 	var canvas = document.getElementById("canvasGrafico");
+    let arrayList = [];
+    let tempo = 0;
 	if (canvas) {
 		//altura da canvas
         var altura = 230;
@@ -55,7 +57,7 @@ window.onload = function(){
         //obtendo o contexto 2d
         var ctx = canvas.getContext("2d");
 
-        ctx.fillStyle = "lime";
+        ctx.fillStyle = "white";
         ctx.fillRect(0, 0, largura, altura);
         ctx.font = "30px Courier";
 	}
@@ -66,7 +68,7 @@ window.onload = function(){
 
             ctx.beginPath();
             ctx.clearRect(0, 0, largura, altura);
-            ctx.fillStyle = "lime";
+            ctx.fillStyle = "white";
             ctx.fillRect(0, 0, largura, altura);
             ctx.closePath();
         }
@@ -79,7 +81,7 @@ window.onload = function(){
         ctx.lineTo(x, altura-valor);
         ctx.stroke();
         //desenha um retangulo onde está sendo escrito o valor do gráfico
-        ctx.fillStyle = "lime";
+        ctx.fillStyle = "white";
         ctx.fillRect(0, 0, largura, 30);
         //desenha o texto indicando o valor do gráfico, na posição x atual
         ctx.fillStyle = "red";
@@ -88,9 +90,10 @@ window.onload = function(){
         }else{
             ctx.fillText(valor, 930, 30);
         }
-        
+        arrayList.push(valor);
+        document.getElementById('monitoramento').innerHTML = arrayList.map(y => `<li>${y} - Tempo(s): ${tempo}</li>`).join("");
     }
     
-    setInterval(desenharGrafico, 100);
+    setInterval(desenharGrafico, 1000);
 };
 
