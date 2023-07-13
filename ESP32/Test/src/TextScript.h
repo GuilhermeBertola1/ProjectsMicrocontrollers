@@ -13,6 +13,7 @@ String scriptJS(uint8_t ph){
     script += "chk1.addEventListener('change', () => {if(chk1.checked){ window.location = 'http://192.168.4.1/SensorON' }else{ window.location = 'http://192.168.4.1/SensorOFF'; } });";
     script += "chk2.addEventListener('change', () => {if(chk2.checked){ console.log(true); }else{ console.log(false);} });";
     script += "chk3.addEventListener('change', () => {if(chk3.checked){ console.log(true); }else{ console.log(false);} });";
+    script += "window.onload = function(){var canvas = document.getElementById('canvasGrafico'); let arrayList = []; let tempo = 0; if (canvas) {var altura = 230; var largura = 1000; var x = 0; var valor; canvas.setAttribute('width', largura); canvas.setAttribute('height', altura); var ctx = canvas.getContext('2d'); ctx.fillStyle = 'white'; ctx.fillRect(0, 0, largura, altura); ctx.font = '30px Courier';} function desenharGrafico(){if(x === 995){x = 0; ctx.beginPath(); ctx.clearRect(0, 0, largura, altura); ctx.fillStyle = 'white'; ctx.fillRect(0, 0, largura, altura); ctx.closePath();} x+=5; valor = parseInt(Math.random() * 200); ctx.lineTo(x, altura-valor); ctx.stroke(); ctx.fillStyle = 'white'; ctx.fillRect(0, 0, largura, 30); ctx.fillStyle = 'red'; if(x <= 930){ ctx.fillText(valor, x, 30); }else{ ctx.fillText(valor, 930, 30); } arrayList.push(valor); document.getElementById('monitoramento').innerHTML = arrayList.map(y => `<li>${y} - Tempo(s): ${tempo}</li>`).join("");} setInterval(desenharGrafico, 1000); }";
     script += "</script>";
 
     return script;

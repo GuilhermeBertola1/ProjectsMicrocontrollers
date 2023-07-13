@@ -56,6 +56,13 @@ String messageHTML(uint8_t ph, uint8_t sm){
     
     textoHTML += "</div>";
 
+    textoHTML += "<canvas id='canvasGrafico' class='canvasGrafico'></canvas>";
+    textoHTML += "<ul id='monitoramento' class='tabelademonitoramento'></ul>";
+
+    textoHTML += "<div>";
+    textoHTML += "<h2 id='tempo' class='tempo'></h2>";
+    textoHTML += "</div>";
+
     textoHTML += scriptJS(sm);
     textoHTML += "</body>";
 

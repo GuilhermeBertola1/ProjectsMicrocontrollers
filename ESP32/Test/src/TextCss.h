@@ -178,44 +178,28 @@ const char CSS[] = R"===(
             transform: translateX(24px);
         }
 
-        #Quadro{
+        .canvasGrafico{
             display: flex;
             position: absolute;
-            border:solid 1px;
-            height: 50%;
-            width: 50%;
-            top: 0%;
-            left: 0%;
+            top: 69.4%;
         }
 
-        #Quadro1{
-            display: flex;
+        .tabelademonitoramento{
             position: absolute;
-            border:solid 1px;
-            height: 50%;
-            width: 50%;
-            top: 0%;
-            right: 0%;
+            background-color: gray;
+            width: 400px;
+            height: 400px;
+            overflow-y: scroll;
+            word-break: break-all;
+
+            top: 47.4%;
+            left: 67%;   
         }
 
-        #Quadro2{
-            display: flex;
+        .tempo{
             position: absolute;
-            border:solid 1px;
-            height: 50%;
-            width: 50%;
-            top: 50%;
-            left: 0%;
-        }
-
-        #Quadro3{
-            display: flex;
-            position: absolute;
-            border:solid 1px;
-            height: 50%;
-            width: 50%;
-            top: 50%;
-            left: 50%;
+            left: 90%;
+            top: 20%;
         }
     </style>
 )===";
