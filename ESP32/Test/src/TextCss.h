@@ -5,16 +5,40 @@ const char CSS[] = R"===(
             padding: 0;
             border: 0;
             box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         body{
             background-color: aliceblue;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 60px 1fr;
 
             height: 100vh;
             margin: 0;
+        }
+
+        header{
+            background-color: aqua;
+            padding:20px 2%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-header{
+            color: black;
+            display: flex;
+            justify-content: space-around;
+            width: 240px;
+        }
+
+        .sidebar{
+            background-color: black;
+
+        }
+
+        .main{
+            background-color: aliceblue;
+
         }
 
         .checkbox{
@@ -44,14 +68,22 @@ const char CSS[] = R"===(
             cursor: pointer;
 
             display: flex;
-            left: 1%;
-            top: 2%;
+            left: 200px;
+            top: 13%;
             justify-content: space-between;
 
             padding: 5px;
             position: absolute;
             height: 26px;
             width: 50px;
+        }
+
+        .logoPH{
+            color: black;
+            display: flex;
+            position: absolute;
+            left: 33px;
+            top: 13%;
         }
 
         .label1{
@@ -60,8 +92,8 @@ const char CSS[] = R"===(
             cursor: pointer;
 
             display: flex;
-            left: 1%;
-            top: 52%;
+            left: 200px;
+            top: 18%;
             justify-content: space-between;
 
             padding: 5px;
@@ -70,14 +102,22 @@ const char CSS[] = R"===(
             width: 50px;
         }
 
+        .logoSM{
+            color: black;
+            display: flex;
+            position: absolute;
+            left: 33px;
+            top: 18%;
+        }
+
         .label2{
             background-color: black;
             border-radius: 50px;
             cursor: pointer;
 
             display: flex;
-            left: 51%;
-            top: 2%;
+            left: 200px;
+            top: 23%;
             justify-content: space-between;
 
             padding: 5px;
@@ -92,8 +132,8 @@ const char CSS[] = R"===(
             cursor: pointer;
 
             display: flex;
-            left: 51%;
-            top: 52%;
+            left: 200px;
+            top: 28%;
             justify-content: space-between;
 
             padding: 5px;

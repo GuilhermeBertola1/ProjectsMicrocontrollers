@@ -15,10 +15,16 @@ String messageHTML(uint8_t ph, uint8_t sm){
 
     textoHTML += "<body>";
 
-    textoHTML += "<div id='Quadro'></div>";
-    textoHTML += "<div id='Quadro1'></div>";
-    textoHTML += "<div id='Quadro2'></div>";
-    textoHTML += "<div id='Quadro3'></div>";
+    textoHTML += "<header>";
+    textoHTML += "<div class='info-header'>";
+    textoHTML += "<div class='logo'>";
+    textoHTML += "<h3>Web Server ESP82266</h3>";
+    textoHTML += "</div>";
+    textoHTML += "</div>";
+    textoHTML += "</header>";
+
+    textoHTML += "<section class='sidebar'></section>";
+    textoHTML += "<main class='main'></main>";
 
     textoHTML += "<div>";
 
@@ -32,6 +38,10 @@ String messageHTML(uint8_t ph, uint8_t sm){
     textoHTML += "<div class='ball'></div>";
     textoHTML += "</label>";
 
+    textoHTML += "<div class='logoPH'>";
+    textoHTML += "<h3>Botao Ponte H</h3>";
+    textoHTML += "</div>";
+
     if(sm){
         textoHTML += "<input type='checkbox' class='checkbox1' id='chk1' checked='checked'/>";
     }else{
@@ -41,6 +51,10 @@ String messageHTML(uint8_t ph, uint8_t sm){
     textoHTML += "<label class='label1' for='chk1'>";
     textoHTML += "<div class='ball1'></div>";
     textoHTML += "</label>";
+
+    textoHTML += "<div class='logoSM'>";
+    textoHTML += "<h3>Botao SM</h3>";
+    textoHTML += "</div>";
 
     textoHTML += "<input type='checkbox' class='checkbox2' id='chk2'/>";
 

@@ -90,10 +90,11 @@ window.onload = function(){
         }else{
             ctx.fillText(valor, 930, 30);
         }
-        arrayList.push(valor);
-        document.getElementById('monitoramento').innerHTML = arrayList.map(y => `<li>${y} - Tempo(s): ${tempo}</li>`).join("");
+        
     }
     
     setInterval(desenharGrafico, 1000);
 };
 
+arrayList.push(valor);
+document.getElementById('monitoramento').innerHTML = arrayList.map(y => `<li class="x">valor sensor:${y}°C</li>`).join("");
