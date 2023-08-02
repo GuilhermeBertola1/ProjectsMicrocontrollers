@@ -9,6 +9,7 @@
 #include <TextHtmlRoot.h>
 #include <pontH.h>
 #include <sensorModule.h>
+#include <chart.h>
 
 #include <EEPROM.h>
 #include <FS.h>
@@ -123,6 +124,8 @@ void setup() {
 
     server.begin();
     Serial.println("HTTP serve rodando");
+
+    jschart();
     
 }
 

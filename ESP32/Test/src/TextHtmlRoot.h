@@ -1,6 +1,7 @@
 #include <String.h>
 #include <TextScript.h>
 #include <TextCss.h>
+//#include <chart.h>
 
 String messageHTML(uint8_t ph, uint8_t sm){
 
@@ -10,6 +11,9 @@ String messageHTML(uint8_t ph, uint8_t sm){
     textoHTML += "<head>";
     textoHTML += "<meta charset='UTF-8'>";
     textoHTML += "<title>ESP8266</title>";
+    textoHTML += "<script>";
+    
+    textoHTML += "</script>";
     textoHTML += CSS;
     textoHTML += "</head>";
 
