@@ -1,7 +1,6 @@
 #include <String.h>
 #include <TextScript.h>
 #include <TextCss.h>
-//#include <chart.h>
 
 String messageHTML(uint8_t ph, uint8_t sm){
 
@@ -11,9 +10,7 @@ String messageHTML(uint8_t ph, uint8_t sm){
     textoHTML += "<head>";
     textoHTML += "<meta charset='UTF-8'>";
     textoHTML += "<title>ESP8266</title>";
-    textoHTML += "<script>";
-    
-    textoHTML += "</script>";
+    textoHTML += "<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js'></script>";
     textoHTML += CSS;
     textoHTML += "</head>";
 

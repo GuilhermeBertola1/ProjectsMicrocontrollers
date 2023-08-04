@@ -9,10 +9,9 @@
 #include <TextHtmlRoot.h>
 #include <pontH.h>
 #include <sensorModule.h>
-#include <chart.h>
 
 #include <EEPROM.h>
-#include <FS.h>
+#include <LittleFS.h>
 
 bool PontH;
 bool SensorM;
@@ -23,8 +22,6 @@ bool statusMS = false;
 const char* ApAdress = "ESP8266-Access-Point";
 const char* ApPass = "170704gui";
 
-WiFiClient client;
-HTTPClient http;
 ESP8266WebServer server(80);
 
 void handleRoot(){
@@ -100,16 +97,12 @@ void setup() {
 
     Serial.begin(115200);
 
-//estacao local
+//estacao local-----------
     WiFi.softAP(ApAdress, ApPass);
     IPAddress IP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
     Serial.println(IP);
 //-------------------------
-
-    if(MDNS.begin("esp8266")){
-        Serial.println("MDNS respondendo");
-    }
 
     server.on("/", handleRoot);
     server.on("/PhON", handlePHON);
@@ -124,8 +117,6 @@ void setup() {
 
     server.begin();
     Serial.println("HTTP serve rodando");
-
-    jschart();
     
 }
 

@@ -1,3 +1,4 @@
 tzapu/WiFiManager@^0.16.0
-bblanchon/ArduinoJson@^6.21.2
+ottowinter/ESPAsyncWebServer-esphome@^3.0.0
 gilmaimon/ArduinoWebsockets@^0.5.3
+bblanchon/ArduinoJson@^6.21.2
