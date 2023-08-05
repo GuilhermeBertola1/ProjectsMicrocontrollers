@@ -6,8 +6,7 @@ const chk3 = document.getElementById("chk3");
 chk.addEventListener("change", () => {
   if (chk.checked) {
     console.log(true);
-    window.location =
-      "file:///c%3A/Users/guilh/OneDrive/Documents/GitHub/ProjectsMicrocontrollers/ESP32/Test/testWEB/index.html/PH";
+    window.location = "/PH";
   } else {
     console.log(false);
   }
@@ -102,7 +101,7 @@ window.onload = function () {
 };
 
 let inicio = {
-  labels: ["s3"],
+  labels: ["s1"],
   datasets: [
     {
       label: "Valor Medido",
@@ -130,7 +129,7 @@ let myChart = new Chart(ctx, {
 
 function addData(newData) {
   let data = myChart.data;
-  data.labels.push("s" + 3);
+  data.labels.push("s" + 1);
   data.datasets[0].data.push(newData);
   myChart.update();
 }

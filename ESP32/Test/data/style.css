@@ -239,7 +239,7 @@ header {
 
 .myChart {
   position: relative;
-  top: 200px;
+  top: 70vh;
   margin: auto;
   width: 400px;
   height: 200px;
