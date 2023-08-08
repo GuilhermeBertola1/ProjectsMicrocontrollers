@@ -3,20 +3,61 @@ const chk1 = document.getElementById("chk1");
 const chk2 = document.getElementById("chk2");
 const chk3 = document.getElementById("chk3");
 
+let arrayList = [];
+
+function monitorarValorSM(array) {
+  return function () {
+    let xhttp = new XMLHttpRequest();
+    let valor = 0;
+
+    xhttp.open("GET", "/SM", true);
+    xhttp.send();
+    console.log(xhttp.status);
+
+    if (xhttp.status === 0) {
+      valor = parseInt(Math.random() * 200);
+      array.push(valor);
+      document.getElementById("monitoramento").innerHTML = array
+        .map((y) => `<li class="x">valor sensor:${y}°C</li>`)
+        .join("");
+
+      addData(valor);
+    }
+  };
+}
+
+function monitorarValorPHON() {
+  return function () {
+    let HTTp = new XMLHttpRequest();
+    HTTp.open("GET", "/PHon", true);
+    HTTp.send();
+  };
+}
+
+function monitorarValorPHOFF() {
+  return function () {
+    let HTTp = new XMLHttpRequest();
+    HTTp.open("GET", "/PHoff", true);
+    HTTp.send();
+  };
+}
+
 chk.addEventListener("change", () => {
   if (chk.checked) {
     console.log(true);
-    window.location = "/PH";
-  } else {
-    console.log(false);
+    monitorarValorPHON();
+    chk.addEventListener("change", () => {
+      monitorarValorPHOFF();
+    });
   }
 });
 
 chk1.addEventListener("change", () => {
   if (chk1.checked) {
-    console.log(true);
-  } else {
-    console.log(false);
+    const timer = setInterval(monitorarValorSM(arrayList), 3000);
+    chk1.addEventListener("change", () => {
+      clearInterval(timer);
+    });
   }
 });
 
@@ -35,26 +76,6 @@ chk3.addEventListener("change", () => {
     console.log(false);
   }
 });
-
-window.onload = function () {
-  let x = 0;
-  let arrayList = [];
-
-  function monitorarValor() {
-    x += 5;
-    let valor = 0;
-
-    valor = parseInt(Math.random() * 200);
-
-    arrayList.push(valor);
-    document.getElementById("monitoramento").innerHTML = arrayList
-      .map((y) => `<li class="x">valor sensor:${y}°C</li>`)
-      .join("");
-
-    addData(valor);
-  }
-  setInterval(monitorarValor, 1000);
-};
 
 let inicio = {
   labels: ["s3"],

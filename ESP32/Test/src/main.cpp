@@ -2,7 +2,6 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 
-#include <TextHtmlRoot.h>
 #include <pontH.h>
 #include <sensorModule.h>
 
@@ -19,6 +18,18 @@ const char* ApAdress = "ESP8266-Access-Point";
 const char* ApPass = "170704gui";
 
 AsyncWebServer server(80);
+
+String messagemMonitor(){
+    String var = "OII";
+    Serial.println(var);
+    return var;
+}
+
+String msg(){
+    String var = "ligou";
+    Serial.println(var);
+    return var;
+}
 
 
 void setup() {
@@ -48,6 +59,24 @@ void setup() {
     server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(LittleFS, "/script.js","text/javascript");
     });
+
+    server.on("/PHon", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/plain", msg().c_str());
+        statusPH = true;
+        if(statusPH){
+            Serial.println("OPQQQQ");
+        }
+    });
+
+    server.on("/PHoff", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/plain", msg().c_str());
+        statusPH = false;
+    });
+
+    server.on("/SM", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/plain", messagemMonitor().c_str());
+    });
+    
     
     server.begin();
     Serial.println("HTTP server rodando");
@@ -55,7 +84,4 @@ void setup() {
 }
 
 void loop() {
-
-    if(statusPH){}
-    if(statusMS){}
 }
