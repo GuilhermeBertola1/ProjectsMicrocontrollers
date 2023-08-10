@@ -1,21 +1,37 @@
+//bibliotecas--------------------
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 
-#include <pontH.h>
-#include <sensorModule.h>
-
 #include <EEPROM.h>
 #include <LittleFS.h>
+//bibliotecas--------------------
 
+//configuracoes variaveis--------
 bool PontH;
 bool SensorM;
 bool status = false;
 bool statusPH = false;
 bool statusMS = false;
 
+int valorLimiteChuva = 500;           
+bool chuva = false;
+
+bool fatorMotor = 0;
+
+int timerMotor = 0;
+//configuracoes variaveis--------
+
+//configuracoes WIFI-------------
 const char* ApAdress = "ESP8266-Access-Point";
 const char* ApPass = "170704gui";
+//configuracoes WIFI-------------
+
+//definir pinos------------------
+#define D0 16
+#define D1 5
+#define D2 4
+//definir pinos------------------
 
 AsyncWebServer server(80);
 
@@ -30,11 +46,80 @@ String msg(){
     return var;
 }
 
+void Motor1At(){
+	Serial.println("Motor 1 ativo");
+   	do{	
+		Serial.println(timerMotor + 1);
+      
+    	digitalWrite(D2, LOW);
+    	digitalWrite(D1, HIGH);
+        timerMotor++;
+        delay(1000);
+    }while(timerMotor < 5);
+      
+    timerMotor = 0;
+    digitalWrite(D1, LOW);
+    fatorMotor = 1;
+}
+
+void Motor2At(){
+	Serial.println("Motor 2 ativo");
+  	
+    do{
+  		Serial.println(timerMotor + 1);
+      
+    	digitalWrite(D1, LOW);
+    	digitalWrite(D2, HIGH);
+        timerMotor++;
+        delay(1000);
+    }while(timerMotor < 5);
+      
+    timerMotor = 0;
+    digitalWrite(D2, LOW);
+    fatorMotor = 0;
+}
+
+void HighMotor(){
+
+    if(fatorMotor == 0){
+  	    if(chuva == true){
+		    Motor1At();
+  	    }
+    }
+  
+    if(fatorMotor == 1){
+  	    if(chuva == false){
+      	    Motor2At();
+  	    }
+    }
+
+}
+
+void sensorModulo(){
+
+    int valorSensorChuva = analogRead(D0);
+    Serial.print("Sensor de chuva = ");
+    Serial.print(valorSensorChuva);
+    if (valorSensorChuva < valorLimiteChuva){
+        Serial.println(" => Esta chovendo");
+        chuva = true;
+    }else{
+        Serial.println(" => O tempo esta seco");
+   	    chuva = false;
+    }
+
+}
 
 void setup() {
 
     Serial.begin(115200);
     LittleFS.begin();
+
+    //configuracoes pinos------------
+    pinMode(D0, INPUT);
+    pinMode(D1, OUTPUT); //positivo
+    pinMode(D2, OUTPUT); //negativo
+    //configuracoes pinos------------
 
 //estacao local-----------
     WiFi.softAP(ApAdress, ApPass);
