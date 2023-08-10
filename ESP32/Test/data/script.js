@@ -27,28 +27,26 @@ function monitorarValorSM(array) {
 }
 
 function monitorarValorPHON() {
-  return function () {
-    let HTTp = new XMLHttpRequest();
-    HTTp.open("GET", "/PHon", true);
-    HTTp.send();
-  };
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/PHON", true);
+  xhttp.send();
+  console.log(xhttp.status);
 }
 
 function monitorarValorPHOFF() {
-  return function () {
-    let HTTp = new XMLHttpRequest();
-    HTTp.open("GET", "/PHoff", true);
-    HTTp.send();
-  };
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/PHOFF", true);
+  xhttp.send();
+  console.log(xhttp.status);
 }
 
 chk.addEventListener("change", () => {
   if (chk.checked) {
     console.log(true);
     monitorarValorPHON();
-    chk.addEventListener("change", () => {
-      monitorarValorPHOFF();
-    });
+  } else {
+    console.log(false);
+    monitorarValorPHOFF();
   }
 });
 

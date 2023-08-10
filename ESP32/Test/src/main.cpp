@@ -27,7 +27,6 @@ String messagemMonitor(){
 
 String msg(){
     String var = "ligou";
-    Serial.println(var);
     return var;
 }
 
@@ -60,15 +59,12 @@ void setup() {
         request->send(LittleFS, "/script.js","text/javascript");
     });
 
-    server.on("/PHon", HTTP_GET, [](AsyncWebServerRequest *request){
+    server.on("/PHON", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "text/plain", msg().c_str());
         statusPH = true;
-        if(statusPH){
-            Serial.println("OPQQQQ");
-        }
     });
 
-    server.on("/PHoff", HTTP_GET, [](AsyncWebServerRequest *request){
+    server.on("/PHOFF", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "text/plain", msg().c_str());
         statusPH = false;
     });
@@ -84,4 +80,10 @@ void setup() {
 }
 
 void loop() {
+    if(statusPH){
+        Serial.println("ligou PH");
+    }else if(!statusPH){
+        Serial.println("desligou PH");
+    }
+    delay(500);
 }
