@@ -240,7 +240,8 @@ header {
 .myChart {
   position: relative;
   top: 70vh;
+  left: -300px;
   margin: auto;
-  width: 400px;
-  height: 200px;
+  width: 1000px;
+  height: 250px;
 }

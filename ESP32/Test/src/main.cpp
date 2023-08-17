@@ -81,21 +81,17 @@ void Motor2At(){
 
 void HighMotor(){
 
-    if(fatorMotor == 0){
-  	    if(chuva == true){
-		    Motor1At();
-  	    }
+    if(fatorMotor == 0 && chuva == true){
+		Motor1At();
     }
   
-    if(fatorMotor == 1){
-  	    if(chuva == false){
-      	    Motor2At();
-  	    }
+    if(fatorMotor == 1 && chuva == false){
+      	Motor2At();
     }
 
 }
 
-void sensorModulo(){
+String sensorModulo(){
 
     int valorSensorChuva = analogRead(D0);
     Serial.print("Sensor de chuva = ");
@@ -107,7 +103,7 @@ void sensorModulo(){
         Serial.println(" => O tempo esta seco");
    	    chuva = false;
     }
-
+    return String(valorSensorChuva);
 }
 
 void setup() {
@@ -155,7 +151,7 @@ void setup() {
     });
 
     server.on("/SM", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", messagemMonitor().c_str());
+        request->send(200, "text/plain", sensorModulo().c_str());
     });
     
     
@@ -165,10 +161,4 @@ void setup() {
 }
 
 void loop() {
-    if(statusPH){
-        Serial.println("ligou PH");
-    }else if(!statusPH){
-        Serial.println("desligou PH");
-    }
-    delay(500);
 }
