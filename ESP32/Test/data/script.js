@@ -79,15 +79,15 @@ function monitorarValorSM(array) {
 function monitorarValorPHON() {
   let xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/PHON", true);
-  xhttp.send();
   console.log(xhttp.status);
+  xhttp.send();
 }
 
 function monitorarValorPHOFF() {
   let xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/PHOFF", true);
-  xhttp.send();
   console.log(xhttp.status);
+  xhttp.send();
 }
 
 chk.addEventListener("change", () => {

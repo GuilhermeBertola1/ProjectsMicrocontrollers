@@ -64,7 +64,7 @@ header {
   cursor: pointer;
 
   display: inline-block;
-  left: 17%;
+  left: 2%;
   top: 13%;
   justify-content: space-around;
 
@@ -77,9 +77,10 @@ header {
 .logoPH {
   color: black;
   position: absolute;
-  display: inline-block;
-  left: 4%;
-  top: 13%;
+  display: flex;
+  width: 151px;
+  left: 120%;
+  top: 0%;
 }
 
 .label1 {
@@ -88,7 +89,7 @@ header {
   cursor: pointer;
 
   display: inline-block;
-  left: 17%;
+  left: 2%;
   top: 18%;
   justify-content: space-around;
 
@@ -102,8 +103,9 @@ header {
   color: black;
   position: absolute;
   display: inline-block;
-  left: 4%;
-  top: 18%;
+  width: 100px;
+  left: 120%;
+  top: 0%;
 }
 
 .label2 {
@@ -112,7 +114,7 @@ header {
   cursor: pointer;
 
   display: inline-block;
-  left: 17%;
+  left: 2%;
   top: 23%;
   justify-content: space-between;
 
@@ -128,7 +130,7 @@ header {
   cursor: pointer;
 
   display: inline-block;
-  left: 17%;
+  left: 2%;
   top: 28%;
   justify-content: space-between;
 
@@ -237,11 +239,14 @@ header {
   padding: 8px 10px;
 }
 
-.myChart {
-  position: relative;
-  top: 70vh;
-  left: -300px;
-  margin: auto;
+.tamanho {
   width: 1000px;
   height: 250px;
+}
+
+.myChart {
+  position: absolute;
+  top: 67%;
+  left: 2%;
+  margin: auto;
 }
