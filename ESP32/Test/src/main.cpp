@@ -41,42 +41,28 @@ String messagemMonitor(){
     return var;
 }
 
-String msg(){
-    String var = "ligou";
-    return var;
-}
-
 void Motor1At(){
 	Serial.println("Motor 1 ativo");
-   	do{	
-		Serial.println(timerMotor + 1);
-      
-    	digitalWrite(D2, LOW);
-    	digitalWrite(D1, HIGH);
-        timerMotor++;
-        delay(1000);
-    }while(timerMotor < 5);
-      
-    timerMotor = 0;
-    digitalWrite(D1, LOW);
-    fatorMotor = 1;
+    digitalWrite(D1, HIGH);
 }
 
 void Motor2At(){
 	Serial.println("Motor 2 ativo");
-  	
-    do{
-  		Serial.println(timerMotor + 1);
       
-    	digitalWrite(D1, LOW);
-    	digitalWrite(D2, HIGH);
-        timerMotor++;
-        delay(1000);
-    }while(timerMotor < 5);
-      
-    timerMotor = 0;
-    digitalWrite(D2, LOW);
-    fatorMotor = 0;
+    digitalWrite(D1, LOW);
+    digitalWrite(D2, HIGH);
+}
+
+String msg1(){
+    
+    String var = "ligou1";
+    return var;
+}
+
+String msg2(){
+    
+    String var = "ligou2";
+    return var;
 }
 
 void HighMotor(){
@@ -141,13 +127,15 @@ void setup() {
     });
 
     server.on("/PHON", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", msg().c_str());
+        request->send(200, "text/plain", msg1().c_str());
         statusPH = true;
+        Motor1At();
     });
 
     server.on("/PHOFF", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", msg().c_str());
+        request->send(200, "text/plain", msg2().c_str());
         statusPH = false;
+        Motor2At();
     });
 
     server.on("/SM", HTTP_GET, [](AsyncWebServerRequest *request){
