@@ -52,7 +52,8 @@ header {
 }
 
 .logo {
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
   position: absolute;
   left: 2.5%;
   top: 37%;
@@ -256,9 +257,6 @@ header {
   display: flex;
   height: 50px;
   width: 50px;
-  background-image: url("5213449.png");
-  background-repeat: no-repeat, no-repeat;
-  background-size: 50px;
   left: 12%;
   top: 2%;
 }
@@ -268,9 +266,6 @@ header {
   display: flex;
   height: 50px;
   width: 50px;
-  background-image: url("3105807.png");
-  background-repeat: no-repeat, no-repeat;
-  background-size: 40px;
   left: 95%;
   top: 13.5%;
 }

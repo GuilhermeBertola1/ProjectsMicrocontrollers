@@ -115,15 +115,23 @@ void setup() {
     });
 
     server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(LittleFS, "/style.css","text/css");
+        request->send(LittleFS, "/style.css", "text/css");
+    });
+
+    server.on("/5213449.png", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(LittleFS, "/5213449.png", "image/png");
+    });
+
+    server.on("/3105807.png", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(LittleFS, "/3105807.png", "image/png");
     });
 
     server.on("/chart.umd.js", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(LittleFS, "/chart.umd.js","text/javascript");
+        request->send(LittleFS, "/chart.umd.js", "text/javascript");
     });
 
     server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(LittleFS, "/script.js","text/javascript");
+        request->send(LittleFS, "/script.js", "text/javascript");
     });
 
     server.on("/PHON", HTTP_GET, [](AsyncWebServerRequest *request){
