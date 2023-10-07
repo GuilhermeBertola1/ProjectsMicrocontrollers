@@ -20,7 +20,7 @@ bool chuva = false;
 bool fatorMotor = 0;
 
 int timerMotor = 0;
-//configuracoes variaveis--------
+//configuracoes variiveis--------
 
 //configuracoes WIFI-------------
 const char* ApAdress = "ESP8266-Access-Point";
