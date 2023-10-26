@@ -2,5 +2,6 @@
   "C_Cpp.errorSquiggles": "disabled",
   "files.associations": {
     "typeinfo": "cpp"
-  }
+  },
+  "cmake.sourceDirectory": "C:/Users/guilh/OneDrive/Documents/GitHub/ProjectsMicrocontrollers/ESP32/Test/.pio/libdeps/nodemcuv2/AsyncTCP"
 }

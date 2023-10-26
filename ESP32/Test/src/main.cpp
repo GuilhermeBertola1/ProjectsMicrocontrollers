@@ -44,6 +44,7 @@ String messagemMonitor(){
 void Motor1At(){
 	Serial.println("Motor 1 ativo");
     digitalWrite(D1, HIGH);
+    digitalWrite(D2, LOW);
 }
 
 void Motor2At(){
@@ -51,6 +52,11 @@ void Motor2At(){
       
     digitalWrite(D1, LOW);
     digitalWrite(D2, HIGH);
+}
+
+void ResetMotor(){
+    digitalWrite(D1, LOW);
+    digitalWrite(D2, LOW);
 }
 
 String msg1(){
@@ -143,7 +149,7 @@ void setup() {
     server.on("/PHOFF", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "text/plain", msg2().c_str());
         statusPH = false;
-        Motor2At();
+        ResetMotor();
     });
 
     server.on("/SM", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -156,4 +162,4 @@ void setup() {
     
 }
 
-void loop() {}
+void loop(){}
