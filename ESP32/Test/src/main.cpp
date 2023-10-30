@@ -28,7 +28,7 @@ const char* ApPass = "170704gui";
 //configuracoes WIFI-------------
 
 //definir pinos------------------
-#define D0 16
+#define A0 17
 #define D1 5
 #define D2 4
 //definir pinos------------------
@@ -49,7 +49,6 @@ void Motor1At(){
 
 void Motor2At(){
 	Serial.println("Motor 2 ativo");
-      
     digitalWrite(D1, LOW);
     digitalWrite(D2, HIGH);
 }
@@ -71,21 +70,18 @@ String msg2(){
     return var;
 }
 
-void HighMotor(){
-
-    if(fatorMotor == 0 && chuva == true){
-		Motor1At();
+void HighMotor(bool x, bool y){
+    if(x == 1 && y == false){
+        Motor1At();
     }
-  
-    if(fatorMotor == 1 && chuva == false){
-      	Motor2At();
+    if(x == 1 && y == true){
+        Motor2At();
     }
-
 }
 
 String sensorModulo(){
 
-    int valorSensorChuva = analogRead(D0);
+    int valorSensorChuva = analogRead(A0);
     Serial.print("Sensor de chuva = ");
     Serial.print(valorSensorChuva);
     if (valorSensorChuva < valorLimiteChuva){
@@ -143,7 +139,6 @@ void setup() {
     server.on("/PHON", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "text/plain", msg1().c_str());
         statusPH = true;
-        Motor1At();
     });
 
     server.on("/PHOFF", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -162,4 +157,6 @@ void setup() {
     
 }
 
-void loop(){}
+void loop(){
+    HighMotor(statusPH, chuva);
+}
