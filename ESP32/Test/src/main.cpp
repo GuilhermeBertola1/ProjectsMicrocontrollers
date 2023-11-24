@@ -13,6 +13,8 @@ bool SensorM;
 bool status = false;
 bool statusPH = false;
 bool statusMS = false;
+bool fimAlto = false;
+bool fimBaixo = false;
 
 int valorLimiteChuva = 500;           
 bool chuva = false;
@@ -31,6 +33,8 @@ const char* ApPass = "170704gui";
 #define A0 17
 #define D1 5
 #define D2 4
+#define D3 0
+#define D4 2
 //definir pinos------------------
 
 AsyncWebServer server(80);
@@ -72,10 +76,18 @@ String msg2(){
 
 void HighMotor(bool x, bool y){
     if(x == 1 && y == false){
-        Motor1At();
+        if(fimAlto == true){
+            ResetMotor();
+        }else{
+            Motor1At();
+        }
     }
     if(x == 1 && y == true){
-        Motor2At();
+        if(fimBaixo == true){
+            ResetMotor();
+        }else{
+            Motor2At();
+        }
     }
 }
 
@@ -100,9 +112,11 @@ void setup() {
     LittleFS.begin();
 
     //configuracoes pinos------------
-    pinMode(D0, INPUT);
+    pinMode(A0, INPUT);
     pinMode(D1, OUTPUT); //positivo
     pinMode(D2, OUTPUT); //negativo
+    pinMode(D3, INPUT);
+    pinMode(D4, INPUT);
     //configuracoes pinos------------
 
 //estacao local-----------
@@ -157,6 +171,12 @@ void setup() {
     
 }
 
+void SensorFim(){
+    fimAlto = !digitalRead(D3);
+    fimBaixo = !digitalRead(D4);
+}
+
 void loop(){
+    SensorFim();
     HighMotor(statusPH, chuva);
 }
