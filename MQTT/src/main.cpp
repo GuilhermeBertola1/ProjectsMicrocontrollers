@@ -1,18 +1,13 @@
-#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
 
-// put function declarations here:
-int myFunction(int, int);
+//rede wifi - conexao
+const char* rede = "BERTOLA_2.4G";
+const char* senha = "170704gui";
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
+//mqtt broker - conexao
+const char* mqtt_broker = "192.168.0.15";
+const char* topic = "topico/auto";
+const char* mqtt_user = "Bertola123";
+const char* mqtt_pas = "170704gui";
+const char* mqtt_port = "1883";
